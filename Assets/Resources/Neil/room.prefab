@@ -47,6 +47,8 @@ MonoBehaviour:
   roomAuthor: Neil
   designedRoomFile: {fileID: 4900000, guid: d8a406a8f9fda4a5f9b2e34911b06125, type: 3}
   localTilePrefabs:
-  - {fileID: 9068887257775395049, guid: 0606e81fefa3948d49033adb328a7a75, type: 3}
+  - {fileID: 302966834154814104, guid: 6bae2b9209e7d42358ca443ed2dac0c5, type: 3}
+  - {fileID: 1097009321995878, guid: 7f119146519d742d7953341b07580643, type: 3}
+  - {fileID: 6677565063699646061, guid: 5655d4af53f254ab68860d36ed6b99f4, type: 3}
   roomGridX: 0
   roomGridY: 0

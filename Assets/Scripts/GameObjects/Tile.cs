@@ -511,6 +511,7 @@ public class Tile : MonoBehaviour {
 	public static Tile spawnTile(GameObject tilePrefab, Transform parentOfTile, int gridX, int gridY) {
 		// Enforce constraints on where we spawn tiles.
 		if (gridX < 0 || gridX >= LevelGenerator.ROOM_WIDTH || gridY < 0 || gridY >= LevelGenerator.ROOM_HEIGHT) {
+			Debug.Log("Room width, Room height:"+ LevelGenerator.ROOM_WIDTH+", "+LevelGenerator.ROOM_HEIGHT);
 			throw new UnityException(string.Format("Attempted to spawn tile outside room boundaries. Tile: {0}, Grid X: {1}, Grid Y: {1}", tilePrefab, gridX, gridY));
 		}
 
@@ -524,7 +525,40 @@ public class Tile : MonoBehaviour {
 		return tile;
 	}
 
-	
+    public static List<Tile> DetectTilesInSpriteArea(Vector2 position, Sprite sprite)
+    {
+        Vector2 areaSize;
+
+        if (sprite != null)
+        {
+            // 获取 Sprite 的大小
+            areaSize = sprite.bounds.size;
+        }
+        else
+        {
+            // 默认使用 2x2 大小
+            areaSize = new Vector2(2f, 2f);
+        }
+
+        // 计算检测区域的左下角和右上角
+        Vector2 bottomLeft = position - (areaSize / 2);
+        Vector2 topRight = position + (areaSize / 2);
+
+        // 检测该区域内的所有 Tile
+        Collider2D[] colliders = Physics2D.OverlapAreaAll(bottomLeft, topRight);
+        List<Tile> detectedTiles = new List<Tile>();
+
+        foreach (Collider2D col in colliders)
+        {
+            Tile tile = col.GetComponent<Tile>();
+            if (tile != null)
+            {
+                detectedTiles.Add(tile);
+            }
+        }
+
+        return detectedTiles;
+    }
 
 }
 

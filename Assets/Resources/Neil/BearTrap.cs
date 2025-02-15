@@ -13,4 +13,9 @@ public class BearTrap : Tile
     {
         
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+    }
 }
