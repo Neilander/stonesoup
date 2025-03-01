@@ -6,20 +6,20 @@ public class Neil02MovingWall : Tile
 {
 
     [Header("Movement Settings")]
-    public GameObject gameObjectToMove; // 需要移动的物体
-    public Vector3 startPosition; // 起始位置
-    public Vector3 targetPosition; // 目标位置
-    public AnimationCurve moveCurve; // 控制移动的 Animation Curve
-    public float moveDuration = 2f; // 移动时间
+    public GameObject gameObjectToMove; 
+    public Vector3 startPosition; 
+    public Vector3 targetPosition; 
+    public AnimationCurve moveCurve; 
+    public float moveDuration = 2f;
 
     [Header("Spawn Settings")]
-    public GameObject newObjectPrefab; // 需要生成的新物体
-    public float checkInterval = 1f; // 每隔多久检测一次周围
+    public GameObject newObjectPrefab;
+    public float checkInterval = 1f;
     private float checkTimer = 0f;
 
     [Header("Reverse Movement Settings")]
-    public AnimationCurve reverseMoveCurve; // 控制回退的 Animation Curve
-    public float reverseMoveDuration = 1.5f; // 回退时间
+    public AnimationCurve reverseMoveCurve;
+    public float reverseMoveDuration = 1.5f; 
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -60,7 +60,6 @@ public class Neil02MovingWall : Tile
             yield return null;
         }
 
-        // 确保最终到达目标位置
         gameObjectToMove.transform.localPosition = targetPosition;
     }
 
@@ -111,7 +110,6 @@ public class Neil02MovingWall : Tile
             yield return null;
         }
 
-        // 确保回到起点，然后销毁
         gameObjectToMove.transform.localPosition = startPosition;
         Destroy(gameObject);
     }

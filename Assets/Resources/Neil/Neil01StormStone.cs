@@ -165,7 +165,6 @@ public class Neil01StormStone : Tile
                 return;
             }
 
-            // 启动范围放大动画
             if (rangeObject != null)
             {
                 rangeObject.SetActive(true);
@@ -186,14 +185,14 @@ public class Neil01StormStone : Tile
             yield return null;
         }
 
-        // 放大完成后，执行范围内 Tile 的拉取
+       
         Collider2D[] nearbyColliders = Physics2D.OverlapCircleAll(transform.position, pullRadius);
         foreach (Collider2D nearbyCollider in nearbyColliders)
         {
             Tile tile = nearbyCollider.GetComponent<Tile>();
             if (tile == this)
             {
-                continue; // 跳过自己
+                continue; 
             }
             if (tile != null)
             {
@@ -203,7 +202,7 @@ public class Neil01StormStone : Tile
             }
         }
 
-        // 清除自己
+
         base.die();
     }
 }
