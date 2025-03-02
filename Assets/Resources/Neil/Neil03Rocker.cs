@@ -26,10 +26,10 @@ public class Neil03Rocker : Tile
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 direction = (mousePosition - tileBody.position).normalized;
 
-            // 计算当前移动方向
+            
             Vector2 currentVelocity = tileBody.linearVelocity.normalized;
 
-            // 计算当前移动方向与目标方向的角度差
+          
             float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             float currentAngle = Mathf.Atan2(currentVelocity.y, currentVelocity.x) * Mathf.Rad2Deg;
             float angleDifference = Mathf.DeltaAngle(currentAngle, targetAngle);
@@ -37,13 +37,12 @@ public class Neil03Rocker : Tile
             float rotationStep = turnSpeed * Time.deltaTime;
             float clampedTargetAngle = Mathf.MoveTowardsAngle(currentAngle, targetAngle, rotationStep);
 
-            // 计算新的移动方向
+            
             Vector2 newDirection = new Vector2(Mathf.Cos(clampedTargetAngle * Mathf.Deg2Rad), Mathf.Sin(clampedTargetAngle * Mathf.Deg2Rad));
 
-            // 始终移动，但方向受限于最大旋转角度
+            
             tileBody.linearVelocity = newDirection * moveSpeed;
 
-            // 旋转朝向更新后的方向
             tileBody.rotation = clampedTargetAngle;
             recordDir = newDirection;
         }

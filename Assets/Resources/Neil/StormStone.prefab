@@ -60,13 +60,13 @@ MonoBehaviour:
   tileWereHolding: {fileID: 0}
   aimDirection: {x: 0, y: 0}
   throwSound: {fileID: 0}
-  throwForce: 3000
+  throwForce: 2000
   pushForceToUser: 1600
   onGroundThreshold: 0.8
   damageThreshold: 14
   damageForce: 1000
   afterThrowTime: 0.2
-  pullForce: 3000
+  pullForce: 1500
   pullRadius: 8
   expandDuration: 0.5
   expandCurve:
